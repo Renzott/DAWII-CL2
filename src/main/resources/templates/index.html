@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet"
+          th:href="@{/css/bootstrap.css}">
+
+</head>
+<body>
+
+    <!-- MENSAJES -->
+    <div class="alert alert-success alert-dismissable" th:if="${success != null}">
+        <label th:text="${success}"></label>
+        <button class="close" data-dismiss="alert" type="button">&times;</button>
+    </div>
+
+    <div class="alert alert-info alert-dismissable" th:if="${info != null}">
+        <label th:text="${info}"></label>
+        <button class="close" data-dismiss="alert" type="button">&times;</button>
+    </div>
+
+<div class="container">
+    <div>
+        <a class="btn btn-primary" href="/save/0">Agregar</a>
+    </div>
+
+    <h2 th:if="${list.isEmpty()}">No hay personas</h2>
+    <div th:if="${!list.isEmpty()}">
+        <h2>Lista de Clientes</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Telefono</th>
+                <th>Email</th>
+                <th>Distrito</th>
+                <th>Direccion</th>
+                <th>Tipo Cliente</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="persona : ${list}">
+
+                <td th:text="*{persona.nombre}"></td>
+                <td th:text="*{persona.apellido}"></td>
+                <td th:text="*{persona.telefono}"></td>
+                <td th:text="*{persona.email}"></td>
+                <td th:text="*{persona.distrito.nombre}"></td>
+                <td th:text="*{persona.direccion}"></td>
+                <td th:text="*{persona.tipoCliente.nombre}"></td>
+                <td><a class="btn btn-info" th:href="@{/save/{id}(id=${persona.id})}">Editar</a></td>
+                <td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${persona.id})}">Eliminar</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

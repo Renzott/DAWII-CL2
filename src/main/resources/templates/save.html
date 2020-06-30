@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Personas</title>
+    <!-- Bootstrap CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet"
+          th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<div class="container">
+    <br>
+    <h2>Formulario: <small th:text="${h2Text}" th:remove="tag"/> </h2>
+    <br>
+    <form action="#" th:action="@{/save}" class="form-group"
+          th:object="${cliente}" method="post">
+
+        <input type="hidden" th:field="*{id}" id="id" name="id">
+        <input type="hidden" th:field="*{edit}" id="edit" name="edit">
+
+        <div class="form-group">
+            <label for="nombre">Nombre</label> <input type="text"
+                                                      class="form-control" id="nombre" th:field="*{nombre}"
+                                                      name="nombre">
+            <small class="form-text text-danger"
+                   th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="apellido">Apellido</label> <input type="text"
+                                                          class="form-control" id="apellido" th:field="*{apellido}"
+                                                          name="apellido">
+            <small class="form-text text-danger"
+                   th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="telefono">Telefono</label> <input type="text"
+                                                          class="form-control" id="telefono" th:field="*{telefono}"
+                                                          name="telefono">
+            <small class="form-text text-danger"
+                   th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label> <input type="text"
+                                                          class="form-control" id="email" th:field="*{email}"
+                                                          name="email">
+            <small class="form-text text-danger"
+                   th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="distrito">Distrito</label>
+            <select class="form-control" id="distrito" name="distrito">
+                <option th:each="dis:${listaDistrito}" th:selected="*{distrito != null} ? *{distrito.id} == ${dis.id} : false" th:value="${dis.id}" th:text="${dis.nombre}"/>
+            </select>
+            <small class="form-text text-danger"
+                   th:if="${#fields.hasErrors('distrito')}" th:errors="*{distrito}">
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="direccion">Direccion</label> <input type="text"
+                                                            class="form-control" id="direccion" th:field="*{direccion}"
+                                                            name="direccion">
+            <small class="form-text text-danger"
+                   th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="tipoCliente">Tipo Cliente</label>
+            <select class="form-control" id="tipoCliente" name="tipoCliente">
+                <option th:each="tip:${listaTipo}" th:selected="*{tipoCliente != null} ? *{tipoCliente.id} == ${tip.id} : false" th:value="${tip.id}" th:text="${tip.nombre}"/>
+            </select>
+            <small class="form-text text-danger"
+                   th:if="${#fields.hasErrors('tipoCliente')}" th:errors="*{tipoCliente}">
+            </small>
+        </div>
+
+        <button type="submit" class="btn btn-success">Guardar</button>
+
+    </form>
+</div>
+</body>
+</html>
