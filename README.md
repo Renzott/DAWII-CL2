@@ -40,7 +40,7 @@ Al usar un servidor MySQL remoto, he notado un alto tiempo de espera del servido
 
 Borro el atributo "th:field" de select y declaro un [Operador ternario](https://es.wikipedia.org/wiki/Operador_ternario) en todas las options que se van a renderizar.
 
-Si el objeto esta vacio, todos las opciones seran vacias, ya que este objeto es nuevo. Pero, si el objeto tiene data (Si se va a editar o es devuelta de un error de formulario) este se va a comparar con toda la listas de id`s. Asi dejando seleccionado su respectivo valor.
+Si el objeto esta vacio, ninguna opcion sera seleccionada, ya que este objeto es nuevo. Pero, si el objeto tiene data (Si se va a editar o es devuelta de un error de formulario) este se va a comparar con toda la listas de id's. Asi dejando seleccionado su respectivo valor.
 
 ``` html
 
