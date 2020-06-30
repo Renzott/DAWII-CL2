@@ -38,7 +38,7 @@ He notado un bajo performance con una atributo de Thymeleaf "th:field" y "select
 
 Al usar un servidor MySQL remoto, he notado un alto tiempo de espera del servidor, investige por mi cuenta y encontre una solucion:
 
-Borro el atributo "th:field" de select y declaro una operacion ternaria en todas las options que se van a renderizar.
+Borro el atributo "th:field" de select y declaro un [Operador ternario](https://es.wikipedia.org/wiki/Operador_ternario) en todas las options que se van a renderizar.
 
 Si el objeto esta vacio, todos las opciones seran vacias, ya que este objeto es nuevo. Pero, si el objeto tiene data (Si se va a editar o es devuelta de un error de formulario) este se va a comparar con toda la listas de id`s. Asi dejando seleccionado su respectivo valor.
 
